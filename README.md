@@ -7,12 +7,26 @@ console.log(countOccurrences(arr, 4));
 3
 ```
 
+### solution 
+```js
+const arr = [4, 2, 6, 8, 4, 1, 4];
+console.log(countOccurrences(arr, 4));
+function countOccurrences(arr, number) {
+  let filterArr = arr.filter((el) => el === number);
+  return filterArr.length;
+}
+
+
+```
+
 1.b. Write a function called `filterByLength` that takes an array of strings and a number as input and returns an array of all the strings in the input array whose length is greater than or equal to the input number.
 ```js
 const arr = ["apple", "banana", "cherry", "date", "elderberry"];
 console.log(filterByLength(arr, 6));
 ["banana", "cherry", "elderberry"]
 ```
+
+
 
 1.c. Write a function called `sumOfPrimes` that takes a number as input and returns the sum of all prime numbers less than or equal to the input number.
 ```js
@@ -25,6 +39,12 @@ console.log(sumOfPrimes(10));
 const arr = [1, 4, 2, 5, 3];
 console.log(longestIncreasingSubsequence(arr));
 3 // the longest increasing subsequence is [1, 4, 5]
+```
+### solution 
+```js
+
+
+
 ```
 
 2.a. Write a function called `findPairs` that takes an array of integers and a number as input and returns an array of all pairs of integers in the input array whose sum is equal to the input number.
