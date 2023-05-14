@@ -115,5 +115,18 @@ function findMissingNumber(arr) {
     }
   }
 }
-const arr4 = [1, 2, 3, 4, 5,6 , 8, 9, 10];
+const arr4 = [1, 2, 3, 4, 5, 6, 8, 9, 10];
 console.log(findMissingNumber(arr4));
+
+//* 2.c. Write a function called findNthLargest that takes an array of numbers and a number n as input and returns the nth largest number in the array.
+
+const arr5 = [3, 1, 7, 4, 5];
+console.log(findNthLargest(arr5, 3));
+// 4
+
+function findNthLargest(arr, number) {
+  // itrate the array
+  // find the number in array that grater then number
+  let filterArr = arr.filter((el) => el > number).sort();
+  console.log(filterArr[0]);
+}
