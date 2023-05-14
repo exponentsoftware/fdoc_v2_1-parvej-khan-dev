@@ -130,3 +130,25 @@ function findNthLargest(arr, number) {
   let filterArr = arr.filter((el) => el > number).sort();
   console.log(filterArr[0]);
 }
+
+
+//* 2.d. Write a function called findMaximumSubarray that takes an array of integers as input and returns the maximum sum of any contiguous subarray within the input array.
+
+function findMaximumSubarray(arr){
+  const n = arr.length;
+  let maxSum = []
+  for (let i = 0; i < n; i++) {
+    for (let j = i; j < n; j++) {
+      const subarray = arr.slice(i, j + 1); 
+      let sum = subarray.reduce((a,b)=> a+b, 0)
+      maxSum.push(sum)
+    }
+  }
+  
+
+  return Math.max(...maxSum)
+}
+
+const arr6 = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
+console.log(findMaximumSubarray(arr6));
+6 // the maximum sum subarray is [4, -1, 2, 1]
