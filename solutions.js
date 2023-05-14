@@ -84,7 +84,7 @@ function longestIncreasingSubsequence(Arr) {
 2.a. Write a function called findPairs that takes an array of integers and a number as input and returns an array of all pairs of integers in the input array whose sum is equal to the input number.
 
 */
-const arr3 = [3, 4, 6, 8, 1, 2,7, 9];
+const arr3 = [3, 4, 6, 8, 1, 2, 7, 9];
 console.log(findPairs(arr3, 10));
 // [[3, 7], [4, 6], [8, 2], [1, 9]]
 
@@ -101,3 +101,19 @@ function findPairs(arr, number) {
 
   console.log(stack, "stack");
 }
+
+// * 2.b. Write a function called findMissingNumber that takes an array of integers from 1 to n with one number missing and returns the missing number.
+
+function findMissingNumber(arr) {
+  // find missig number in arr on sequnece
+
+  for (let i = 0; i < arr.length; i++) {
+    let el = arr[i];
+    let next = arr[i + 1];
+    if (next - el !== 1) {
+      return next - 1;
+    }
+  }
+}
+const arr4 = [1, 2, 3, 4, 5,6 , 8, 9, 10];
+console.log(findMissingNumber(arr4));
