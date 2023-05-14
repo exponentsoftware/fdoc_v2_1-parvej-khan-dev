@@ -41,16 +41,63 @@ function sumOfPrimes(number) {
  */
 
   let sum = 2;
-  let arrSum = [2]
+  let arrSum = [2];
   for (let i = 2; i <= number; i++) {
     if (i % 2 !== 0) {
-        arrSum.push(i)
+      arrSum.push(i);
       sum = sum + i;
     }
   }
-  console.log(arrSum, "arrSum")
-return sum;
+  console.log(arrSum, "arrSum");
+  return sum;
 }
 
 console.log(sumOfPrimes(13));
 17; // 2 + 3 + 5 + 7 = 17
+
+/* 
+*Write a function called longestIncreasingSubsequence that takes an array of numbers as input 
+*and returns the length of the longest increasing subsequence in the array. A subsequence is a 
+*sequence that can be derived from another sequence by deleting some or no elements without changing 
+* the order of the remaining elements.
+
+const arr = [1, 4, 2, 5, 3];
+
+
+
+*/
+const arr2 = [1, 4, 2, 5, 3];
+console.log(longestIncreasingSubsequence(arr2));
+3; // the longest increasing subsequence is [1, 4, 5]
+function longestIncreasingSubsequence(Arr) {
+  for (var i = 1; i < Arr.length; i++)
+    for (var j = 0; j < i; j++)
+      if (Arr[i] < Arr[j]) {
+        var x = Arr[i];
+        Arr[i] = Arr[j];
+        Arr[j] = x;
+      }
+  console.log(Arr);
+}
+
+/* 
+2.a. Write a function called findPairs that takes an array of integers and a number as input and returns an array of all pairs of integers in the input array whose sum is equal to the input number.
+
+*/
+const arr3 = [3, 4, 6, 8, 1, 2,7, 9];
+console.log(findPairs(arr3, 10));
+// [[3, 7], [4, 6], [8, 2], [1, 9]]
+
+function findPairs(arr, number) {
+  let stack = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] + arr[j] === number) {
+        stack.push([arr[i], arr[j]]);
+      }
+    }
+  }
+
+  console.log(stack, "stack");
+}
