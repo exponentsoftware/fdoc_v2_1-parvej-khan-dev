@@ -7,8 +7,15 @@
 const arr = [4, 2, 6, 8, 4, 1, 4];
 console.log(countOccurrences(arr, 4));
 function countOccurrences(arr, number) {
-  let filterArr = arr.filter((el) => el === number);
-  return filterArr.length;
+  // let filterArr = arr.filter((el) => el === number);
+  // return filterArr.length;
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === number) {
+      count++;
+    }
+  }
+  return count;
 }
 
 /* 
@@ -21,7 +28,15 @@ greater than or equal to the input number.
 
 // ["banana", "cherry", "elderberry"]
 const filterByLength = (arr, number) => {
-  let filterdata = arr.filter((el) => el.length >= number);
+  // let filterdata = arr.filter((el) => el.length >= number);
+  // return filterdata;
+  let filterdata = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].length >= number) {
+      filterdata.push(arr[i]);
+    }
+  }
+
   return filterdata;
 };
 
@@ -40,19 +55,27 @@ function sumOfPrimes(number) {
 ? if number is prime add on value of sum variable 
  */
 
-  let sum = 2;
-  let arrSum = [2];
+  function isPrime(n) {
+    // Corner case
+    if (n <= 1) return false;
+
+    // Check from 2 to n-1
+    for (let i = 2; i < n; i++) if (n % i == 0) return false;
+
+    return true;
+  }
+
+  console.log(isPrime(number), "isPRime");
+  let MaxSum = 0;
   for (let i = 2; i <= number; i++) {
-    if (i % 2 !== 0) {
-      arrSum.push(i);
-      sum = sum + i;
+    if (isPrime(i)) {
+      MaxSum += i;
     }
   }
-  console.log(arrSum, "arrSum");
-  return sum;
+  console.log("MaxSum", MaxSum);
 }
 
-console.log(sumOfPrimes(13));
+console.log(sumOfPrimes(10));
 17; // 2 + 3 + 5 + 7 = 17
 
 /* 
@@ -131,24 +154,57 @@ function findNthLargest(arr, number) {
   console.log(filterArr[0]);
 }
 
-
 //* 2.d. Write a function called findMaximumSubarray that takes an array of integers as input and returns the maximum sum of any contiguous subarray within the input array.
 
-function findMaximumSubarray(arr){
-  const n = arr.length;
-  let maxSum = []
-  for (let i = 0; i < n; i++) {
-    for (let j = i; j < n; j++) {
-      const subarray = arr.slice(i, j + 1); 
-      let sum = subarray.reduce((a,b)=> a+b, 0)
-      maxSum.push(sum)
+function findMaximumSubarray(nums) {
+  // const n = arr.length;
+  // let maxSum = [];
+  // for (let i = 0; i < n; i++) {
+  //   for (let j = i; j < n; j++) {
+  //     let newarr = [];
+  //     let sum = 0;
+  //     for (let k = i; k <= j; k++) {
+  //       // newarr.push(arr[k]);
+  //       sum += arr[k];
+  //     }
+  //     console.log(newarr, "newArr");
+  //     for (let el = 0; el < newarr.length; el++) {
+  //       sum += newarr[el];
+  //     }
+  //     // console.log(sum, "sum");
+
+  //     maxSum.push(sum);
+  //   }
+  // }
+
+  // let largest = maxSum[0];
+
+  // for (let i = 1; i < maxSum.length; i++) {
+  //   if (maxSum[i] > largest) {
+  //     largest = maxSum[i];
+  //   }
+  // }
+  // console.log(largest, "max");
+
+  // Optimal Solution
+  // optimal solution
+  let sum = 0;
+  let max = nums[0];
+
+  for (let i = 0; i < nums.length; i++) {
+    sum = sum + nums[i];
+    if (sum > max) {
+      max = sum;
+    }
+
+    if (sum < 0) {
+      sum = 0;
     }
   }
-  
 
-  return Math.max(...maxSum)
+  return max;
 }
 
 const arr6 = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
 console.log(findMaximumSubarray(arr6));
-6 // the maximum sum subarray is [4, -1, 2, 1]
+6; // the maximum sum subarray is [4, -1, 2, 1]
